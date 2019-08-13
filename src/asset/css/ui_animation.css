@@ -1,0 +1,65 @@
+/*
+ * page_move
+ * from :
+ * to : main (in)
+ */
+.page-enter-active .main_page { transition: all 1000ms; }
+.page-enter-active .logo { transition: all 1000ms; }
+.page-enter-active .logo .text { transition: all 1000ms; }
+.page-enter-active .logo .br{transition: all 1000ms; }
+
+.page-enter .main_page .logo .text .do { opacity: 0; }
+.page-enter-active .main_page .logo .text .do { opacity: 1; transform: translateY(-100px);}
+
+.page-enter .main_page .logo .text .read { opacity: 0; transform: translateY(100px); }
+.page-enter-active .main_page .logo .text .read { opacity: 1; transform: translateY(0); }
+
+/*
+ * page_move
+ * from : main (out)
+ * to : list
+ */
+
+.page-exit-active .main_page { transition: all 1000ms; }
+.page-exit-active .logo { transition: all 1000ms; }
+.page-exit-active .logo .text { transition: all 1000ms; }
+.page-exit-active .logo .br {transition: all 1000ms; }
+
+.page-exit .main_page { height: 100vh; }
+.page-exit-active .main_page { padding-top: 0; height: 44px; text-align: center; }
+
+.page-exit-active .logo { left: 50%; transform: translateX(-50%); }
+.page-exit-active .logo .text { font-size: 24px; }
+
+.page-exit-active .logo .br { display: none; }
+.page-exit-active .logo .text { display: inline; }
+
+/*
+ * page_move
+ * from : main
+ * to : list (in)
+ */
+.page-enter-active .header { transition: all 1000ms; }
+.page-enter-active .list_type ul > li { transition: all 1000ms; }
+.page-enter-active .list_type ul > li:nth-child(1) { transition-delay: 200ms; }
+.page-enter-active .list_type ul > li:nth-child(2) { transition-delay: 400ms; }
+.page-enter-active .list_type ul > li:nth-child(3) { transition-delay: 600ms; }
+
+.page-enter .header { opacity: 0; transform: translateY(-44px); }
+.page-enter-active .header { opacity: 1; transform: translateY(0); }
+
+.page-enter .list_type ul > li { opacity: 0; transform: translateY(100px); }
+.page-enter-active .list_type ul > li { opacity: 1; transform: translateY(0); }
+
+/*
+ * page_move
+ * from : list (out)
+ * to : Detail
+ */
+/* .page-exit-active .list_type ul > li { transition: all 1000ms; }
+.page-exit-active .list_type ul > li:nth-child(1) { transition-delay: 200ms; }
+.page-exit-active .list_type ul > li:nth-child(2) { transition-delay: 400ms; }
+.page-exit-active .list_type ul > li:nth-child(3) { transition-delay: 600ms; }
+
+.page-exit .list_type ul > li { opacity: 1; transform: translateY(0);  }
+.page-exit-active .list_type ul > li { opacity: 0; transform: translateY(100px); } */

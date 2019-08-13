@@ -1,0 +1,10 @@
+@import url('ui_reset.css');
+@import url('ui_common.css');
+@import url('ui_component.css');
+@import url('ui_content.css');
+@import url('ui_animation.css');
+
+.detail { height: 100vh; background: skyblue; }
+
+.page-enter { min-height: 100%; position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+.page-exit { min-height: 100%; position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
