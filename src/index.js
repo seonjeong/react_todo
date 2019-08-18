@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import {App} from 'src/components'; // App 연결
+import { App } from 'src/containers'; // App 연결
 
 import 'src/asset/css/ui_style.css'; // css 연결
 
@@ -12,4 +12,6 @@ ReactDOM.render(
     document.getElementById('root')
 );
 
-module.hot.accept();
+if( module.hot ){
+     module.hot.accept();
+}

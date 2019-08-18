@@ -1,8 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { Header } from '../components';
-import { Container } from '../layout';
+import { Container, Header, AddButton } from '../components';
 
 class List extends React.Component {
     constructor(props){
@@ -10,20 +9,20 @@ class List extends React.Component {
         this.state = {
             list: props.defaultList
         };
-    }
-    shouldComponentUpdate(nextProps, nextState){
-        return this.props.list !== nextProps.list;
+
+        this.handleClick = this.handleClick.bind(this);
+        console.log('List : constructor');
     }
     componentDidMount(){
-        this.setState(function(prevState){
-            var currentList = prevState.list;
-            this.props.defaultList.map(function(currentValue){
-                currentList.push(currentValue);
-            });
-            return {list: currentList};
-        });
+        this.setState((prevState)=>({list:prevState.list}));
+        console.log('List : componentDidMount');
+    }
+    handleClick(index){
+        this.props.dataDetail(index);
     }
     render(){
+        const handleClick = this.handleClick;
+        console.log('List : render');
         return (
         <div className="wrap">
             <div className="page_wrap list_type">
@@ -35,7 +34,9 @@ class List extends React.Component {
                                 this.state.list.map(function(currentValue,index){
                                     return  (
                                         <li key={index}>
-                                            <Link to="/Detail" className="book_breif">
+                                            <Link to="/Detail" className="book_breif" onClick={()=>{
+                                                    handleClick(index);
+                                                }}>
                                                 <div className="imgbox"><img src={currentValue.img} alt="" /></div>
                                                 <div className="book_info">
                                                     <p className="book_title">{currentValue.title}</p>
@@ -51,7 +52,8 @@ class List extends React.Component {
                             }
                         </ul>
                     </div>
-        		</Container>
+                    <AddButton />
+                </Container>
             </div>
         </div>
 

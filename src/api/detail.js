@@ -1,5 +1,5 @@
-export default function detail(callback){
-    var data_file = "http://localhost:3000/ajax/detail";
+function detail(callback,index = 0){
+    var data_file = "http://localhost:3000/ajax/detail?index="+index;
     var http_request = new XMLHttpRequest();
 
     http_request.onreadystatechange = function() {
@@ -15,3 +15,4 @@ export default function detail(callback){
     http_request.open("GET", data_file, true);
     http_request.send();
 }
+export default detail;

@@ -7,19 +7,19 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "serverbuild": "babel server --watch --out-dir build",
     "serverstart": "nodemon build/main.js --watch build/**/*.js",
-    "devserver": "webpack-dev-server --open --watch --mode development"
+    "devserver": "webpack-dev-server --open --watch --mode development",
+    "expresshot": "nodemon --watch server/ server/main.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
-    "query-string": "^6.8.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-hot-loader": "^4.12.10",
     "react-router-dom": "^5.0.1",
     "react-transition-group": "^4.2.2",
-    "request": "^2.88.0"
+    "webpack-hot-middleware": "^2.25.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.5.5",
@@ -29,14 +29,15 @@
     "@babel/polyfill": "^7.4.4",
     "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "^7.0.0",
+    "@babel/register": "^7.5.5",
     "babel-loader": "^8.0.6",
     "babel-plugin-module-resolver": "^3.2.0",
     "css-loader": "^3.2.0",
+    "extract-loader": "^3.1.0",
     "file-loader": "^4.1.0",
+    "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
     "nodemon": "^1.19.1",
-    "reload": "^3.0.1",
-    "server": "^1.0.19",
     "style-loader": "^0.23.1",
     "url-loader": "^2.1.0",
     "webpack": "^4.39.1",

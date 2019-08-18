@@ -1,4 +1,4 @@
-export default function list(callback){
+function list(callback){
     var data_file = "http://localhost:3000/ajax/list";
     var http_request = new XMLHttpRequest();
 
@@ -15,3 +15,4 @@ export default function list(callback){
     http_request.open("GET", data_file, true);
     http_request.send();
 }
+export default list;

@@ -1,35 +1,43 @@
 import React from 'react';
 
-import { Header } from 'src/components';
-import { Container } from 'src/layout';
+import { Container, Header, AddButton } from 'src/components';
 
 class Detail extends React.Component {
     constructor(props){
         super(props);
         this.state={
-            detail: {}
+            detail: {
+                'img' : '',
+                'title': 'default 책 제목9',
+                'subtitle': 'default 책 부제목9',
+                'star': '5',
+                'author': 'default 지은이',
+                'company': 'default 출판사',
+                'year': 'default 2016',
+                'description': 'default Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor id aliquid provident repellendus pariatur, commodi illum neque architecto animi, dicta numquam, inventore accusamus libero, dolorem iste soluta natus unde repellat!',
+                'comment': 'default Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit deleniti enim natus tempore, similique inventore laudantium fugiat maxime possimus modi eaque aspernatur aut doloribus! Tempore earum veritatis itaque excepturi vitae?'
+            }
         }
-        this.test = React.createRef();
-
-        this.state.isPageAnimation = false;
-
     }
     componentDidMount(){
-        console.log(this.props.defaultDetail)
-        setTimeout(()=>{
-            this.setState({
-                detail: this.props.defaultDetail,
-                isPageAnimation: true
-            });
-        },1000);
+        console.log('Detail : componentDidMount',this.props.defaultDetail.title);
+        this.setState({
+            detail: this.props.defaultDetail
+        });
     }
+    // componentDidUpdate(nextProps){
+    //     console.log('Detail : componentDidUpdate',nextProps.defaultDetail.title);
+    //     this.setState({
+    //         detail: nextProps.defaultDetail
+    //     });
+    // }
     render(){
-        console.log(this.state.isPageAnimation)
+        console.log('Detail : render');
         return (
             <div className="wrap detail_type">
                 <Header title="책 제목" />
         		<Container>
-                    <div className={`detail_view ${this.state.isPageAnimation ? "view_type" : "list_type"}`} ref={this.detailView}>
+                    <div className="detail_view">
                         <section className="detail_column basic_column">
                             <h2 className="hidden">기본 책 정보</h2>
                             <div className="detail_img">
@@ -78,6 +86,7 @@ class Detail extends React.Component {
                             </div>
                         </section>
                     </div>
+                    <AddButton />
                 </Container>
         	</div>
         )

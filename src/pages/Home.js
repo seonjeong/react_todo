@@ -11,9 +11,6 @@ class Home extends React.Component {
 
         this.wrap = React.createRef();
     }
-    // shouldComponentUpdate(nextProps, nextState){
-    //     return this.props.list !== nextProps.list;
-    // }
     render(){
         return (
             <div className="wrap" ref={this.wrap}>

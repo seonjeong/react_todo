@@ -1,31 +1,122 @@
-
-
 /*------------------------------------------------------------
 common
 ------------------------------------------------------------*/
-.hidden { position: absolute; top: 0; left: -9999px; overflow: hidden; width: 1px; height: 1px; font-size: 1px; opacity: 0; }
-img { width: 100%; max-width: 100%; height: auto; }
+.hidden {
+    font-size: 1px;
+    position : absolute;
+    top      : 0;
+    left     : -9999px;
+    overflow : hidden;
+    width    : 1px;
+    height   : 1px;
+    opacity  : 0;
+}
+img {
+    width    : 100%;
+    max-width: 100%;
+    height   : auto;
+}
 /*------------------------------------------------------------
 layout
 ------------------------------------------------------------*/
-#layout { min-height: 100%; }
-#root { min-height: 100%; }
-.wrap { min-height: 100%; box-sizing: border-box; }
-.container { min-height: 100%; padding-top: 44px; box-sizing: border-box; }
-.container_wrap { min-height: 100%; box-sizing: border-box; }
-.contents_wrap { min-height: 100%; box-sizing: border-box; }
-.contents { min-height: 100%; box-sizing: border-box; }
-.header { position: absolute;; top: 0; left: 0; width: 100%; height: 44px; padding-left: 44px; padding-right: 44px; background: #3087e9; text-align: center; box-sizing: border-box; z-index: 1000; }
-.header .page_title { overflow: hidden; padding-top: 8px; font-size: 24px; color: #ffffff; text-align: center; box-sizing: border-box; text-overflow: ellipsis; white-space: nowrap; }
-.btn_header_search { display: inline-block; position: relative; width: 44px; height: 44px; border: none; }
-.header .btn_header_search { position: absolute; top: 0; right: 0; }
-
-.btn_header_back { display: inline-block; position: relative; width: 44px; height: 44px; border: none; background: url('../images/layout/btn_header_back.png') center center no-repeat; background-size: 100%;  }
-.btn_header_back { display: inline-block; position: relative; width: 44px; height: 44px; border: none; background-size: 100%;  }
-
-.header .btn_header_back { position: absolute; top: 0; left: 0; }
-
+#layout {
+    min-height: 100%;
+}
+#root {
+    min-height: 100%;
+}
+.wrap {
+    box-sizing: border-box;
+    min-height: 100%;
+}
+.container {
+    box-sizing : border-box;
+    min-height : 100%;
+    padding-top: 44px;
+}
+.container_wrap {
+    box-sizing: border-box;
+    min-height: 100%;
+}
+.contents_wrap {
+    box-sizing: border-box;
+    min-height: 100%;
+}
+.contents {
+    box-sizing: border-box;
+    min-height: 100%;
+}
+.header {
+    position     : absolute;
+    z-index      : 1000;
+    top          : 0;
+    left         : 0;
+    box-sizing   : border-box;
+    width        : 100%;
+    height       : 44px;
+    padding-right: 44px;
+    padding-left : 44px;
+    text-align   : center;
+    background   : #3087e9;
+}
+.header .page_title {
+    font-size    : 24px;
+    overflow     : hidden;
+    box-sizing   : border-box;
+    padding-top  : 10px;
+    text-align   : center;
+    white-space  : nowrap;
+    text-overflow: ellipsis;
+    color        : #fff;
+}
+.btn_header_back {
+    position       : relative;
+    display        : inline-block;
+    width          : 44px;
+    height         : 44px;
+    border         : none;
+    background     : url("../images/layout/btn_header_back.png") center center no-repeat;
+    background-size: 100%;
+}
+.btn_header_back {
+    position       : relative;
+    display        : inline-block;
+    width          : 44px;
+    height         : 44px;
+    border         : none;
+    background-size: 100%;
+}
+.header .btn_header_back {
+    position: absolute;
+    top     : 0;
+    left    : 0;
+}
 /*------------------------------------------------------------
 wrap type
 ------------------------------------------------------------*/
-.wrap { overflow: hidden; min-height: 100%;  }
+.wrap {
+    overflow  : hidden;
+    min-height: 100%;
+}
+/*------------------------------------------------------------
+page
+------------------------------------------------------------*/
+.page {
+    min-height: 100%;
+}
+.page-enter {
+    min-height: 100%;
+    position  : absolute;
+    top       : 0;
+    left      : 0;
+    width     : 100%;
+    height    : 100%;
+}
+.page-exit {
+    min-height: 100%;
+    position  : absolute;
+    top       : 0;
+    left      : 0;
+    width     : 100%;
+    height    : 100%;
+}

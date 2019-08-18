@@ -1,9 +1,172 @@
 /*------------------------------------------------------------
-component
+list
 ------------------------------------------------------------*/
-.ul_list > ul > li { border-top: 1px solid #d0d0d0; }
-.ul_list > ul > li:first-child { border-top: none; }
-.box_area { padding: 15px 20px; }
-.btn_detail_more { display: inline-block; position: relative; width: 100%; height: 40px; border: none; background: linear-gradient(90deg, #ffffff, transparent); }
-/* .btn_detail_more:after { content: ''; display: block; position: absolute; top: 50%; left: 50%; width: 23px; height: 13px; margin-top: -6px; margin-left: -12px; background: url('src/resources/images/component/btn_detail_more.png') center center no-repeat; } */
-.main_title{ padding-bottom: 10px; font-size: 14px; color: #707070; }
+/* */
+.ul_list > ul > li {
+    border-top: 1px solid #d0d0d0;
+}
+.ul_list > ul > li:first-child {
+    border-top: none;
+}
+.box_area {
+    padding: 15px 20px;
+}
+.main_title {
+    padding-bottom: 10px;
+    color         : #707070;
+    font-size     : 14px;
+}
+/*------------------------------------------------------------
+button 부모
+------------------------------------------------------------*/
+.btn_area {
+    padding-right : 10px;
+    padding-bottom: 20px;
+    padding-left  : 10px;
+}
+/*------------------------------------------------------------
+button
+------------------------------------------------------------*/
+.btn_detail_more {
+    position  : relative;
+    display   : inline-block;
+    width     : 100%;
+    height    : 40px;
+    border    : none;
+    background: linear-gradient(to top, #ffffff, transparent 50%,transparent 100%);
+    cursor    : pointer;
+}
+.btn_detail_more:after {
+    content      : "";
+    display      : block;
+    position     : absolute;
+    top          : 40%;
+    left         : 50%;
+    margin-left  : -10px;
+    margin-top   : -10px;
+    width        : 20px;
+    height       : 20px;
+    border-bottom: 1px solid #323232;
+    border-right : 1px solid #323232;
+    transform    : rotate(45deg);
+}
+.btn_float_action {
+    position     : relative;
+    width        : 56px;
+    height       : 56px;
+    border       : none;
+    border-radius: 50%;
+    background   : #3087e9;
+    cursor       : pointer;
+    z-index      : 1000;
+}
+.btn_float_action:before {
+    position   : absolute;
+    top        : 50%;
+    left       : 50%;
+    margin-top : -1px;
+    margin-left: -15px;
+    width      : 30px;
+    height     : 2px;
+    background : #ffffff;
+    content    : "";
+}
+.btn_float_action:after {
+    position   : absolute;
+    top        : 50%;
+    left       : 50%;
+    margin-top : -15px;
+    margin-left: -1px;
+    width      : 2px;
+    height     : 30px;
+    background : #ffffff;
+    content    : "";
+}
+.container .btn_float_action {
+    position: fixed;
+    right   : 20px;
+    bottom  : 20px;
+}
+.btn_normal {
+    display      : inline-block;
+    box-sizing   : border-box;
+    padding      : 12px 5px;
+    width        : 100%;
+    height       : 40px;
+    border       : none;
+    border-radius: 4px;
+    text-align   : center;
+    font-size    : 16px;
+    cursor       : pointer;
+}
+.btn_normal.primary_type {
+    background: #3087e9;
+    color     : #ffffff;
+}
+/*------------------------------------------------------------
+form container
+------------------------------------------------------------*/
+.form_list {
+    padding-right : 10px;
+    padding-bottom: 20px;
+    padding-left  : 10px;
+}
+.form_box dt {
+    color    : #909090;
+    font-size: 16px;
+}
+@media(max-width: 639px) {
+    .form_box + .form_box {
+        margin-top: 10px;
+    }
+    .form_box dt {
+        padding-top   : 5px;
+        padding-bottom: 5px;
+    }
+}
+@media(min-width: 640px) {
+    .form_box {
+        display: table;
+        width  : 100%;
+    }
+    .form_box + .form_box {
+        margin-top: 10px;
+    }
+    .form_box dt {
+        display       : table-cell;
+        width         : 20%;
+        vertical-align: middle;
+    }
+    .form_box dd {
+        display: table-cell;
+        width  : 80%;
+    }
+}
+/*------------------------------------------------------------
+form
+------------------------------------------------------------*/
+.ui_input {
+    width: 100%;
+}
+.ui_input input {
+    box-sizing   : border-box;
+    padding-right: 10px;
+    padding-left : 10px;
+    width        : 100%;
+    height       : 40px;
+    border       : 1px solid #d0d0d0;
+    color        : #323232;
+    font-size    : 16px;
+}
+.ui_textarea {
+    width: 100%;
+}
+.ui_textarea textarea {
+    box-sizing: border-box;
+    padding   : 10px;
+    width     : 100%;
+    height    : 100px;
+    border    : 1px solid #d0d0d0;
+    color     : #323232;
+    font-size : 16px;
+}
