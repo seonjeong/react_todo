@@ -6,7 +6,8 @@ export default function asyncComponent(getComponent){
         state = {Component: AsyncComponent.Component}
         constructor(props){
             super(props);
-            if(AsyncComponent.Component) return;
+            // if(AsyncComponent.Component) return;
+
             getComponent().then(({default:Component})=>{
                 AsyncComponent.Component = Component;
                 this.setState({Component});

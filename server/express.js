@@ -4,6 +4,10 @@ import router from './routes/route';
 const server = express();
 const port = 3000;
 
+const bodyParser = require('body-parser');
+
+server.use(bodyParser.json());
+
 server.use('/',router);
 
 const webpack = require('webpack');

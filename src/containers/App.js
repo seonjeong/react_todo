@@ -1,12 +1,12 @@
 import React from 'react';
 
 // 라우터
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-// 컴포넌트 & 컨테이너
-import { AsyncHome, AsyncList, AsyncDetail, AsyncForm, AsyncNoMatch } from 'src/pages/index.async';
+// page 컴포넌트
+import { Home, List, Detail, Form, NoMatch, Test } from 'src/pages/index';
 
-// 페이지 트렌지션
+import { PageTransition } from 'src/components';
 import { CSSTransition } from 'react-transition-group';
 
 class App extends React.Component {
@@ -14,21 +14,20 @@ class App extends React.Component {
         super(props);
 
         this.state= {
-            isPageActive : false,
             list : [],
+            detail: {},
             selectedIndex: 0
         };
 
         this.dataList = this.dataList.bind(this);
         this.dataDetail = this.dataDetail.bind(this);
-
         this.dataAdd = this.dataAdd.bind(this);
+
         this.listIndex = this.listIndex.bind(this);
 
     }
     componentDidMount(){
         this.dataList();
-        // this.dataDetail(this.state.selectedIndex);
     }
     dataList(){
         const { list } = require('src/api');
@@ -37,118 +36,112 @@ class App extends React.Component {
                 list: data
             });
         });
-    }
-    dataDetail(index){
-        console.log('App : dataDetail',index);
+    } 
+    dataDetail(callback){
         const { detail } = require('src/api');
+        callback = callback.bind(this);
         detail((data)=>{
-            console.log('api : callback');
-            this.setState({
-                detail: data
-            });
-        },index);
-
-        // this.setState({
-        //     detail: {
-        //         'img' : '',
-        //         'title': 'dataDetail 책 제목9',
-        //         'subtitle': 'dataDetail 책 부제목9',
-        //         'star': '5',
-        //         'author': 'dataDetail 지은이',
-        //         'company': 'dataDetail 출판사',
-        //         'year': 'dataDetail 2016',
-        //         'description': 'dataDetail Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor id aliquid provident repellendus pariatur, commodi illum neque architecto animi, dicta numquam, inventore accusamus libero, dolorem iste soluta natus unde repellat!',
-        //         'comment': 'dataDetail Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit deleniti enim natus tempore, similique inventore laudantium fugiat maxime possimus modi eaque aspernatur aut doloribus! Tempore earum veritatis itaque excepturi vitae?'
-        //     }
-        // });
-
+            callback(data);
+        },this.state.selectedIndex);
+        console.log(this.state)
     }
     dataAdd(addBook){
-        this.setState((preState)=>({
-            list: preState.list.concat(addBook)
-        }));
+        console.log('dataAdd',addBook);
+        this.setState({
+            list: this.state.list.concat(addBook)
+        });
     }
     listIndex(param){
-        this.setState(()=>({selectedIndex:param}))
-        this.dataDetail(param);
+        this.setState({selectedIndex:param});
     }
-    render() {
-        const duration = 1000;
-        console.log('App : render',this.state.detail);
+    render(){
         return (
-        <BrowserRouter>
+        <Router>
             <Route key="/" exact path="/">
-                {({ match }) => (
-                  <CSSTransition
-                    in={match != null}
-                    timeout={duration}
-                    classNames="page"
-                    unmountOnExit
-                  >
-                    <div className="page">
-                      <AsyncHome/>
-                    </div>
-                  </CSSTransition>
-                )}
+                {
+                    (props) => (
+                        <CSSTransition
+                            in={props.match != null}
+                            timeout={1000}
+                            classNames="page"
+                            appear={true}
+                            unmountOnExit
+                        >
+                            <Home />
+                        </CSSTransition>
+                    )
+                }
             </Route>
             <Route key="/Home" exact path="/Home">
-                {({ match }) => (
-                  <CSSTransition
-                    in={match != null}
-                    timeout={duration}
-                    classNames="page"
-                    unmountOnExit
-                  >
-                    <div className="page">
-                      <AsyncHome/>
-                    </div>
-                  </CSSTransition>
-                )}
-            </Route>
+                {
+                    (props) => (
+                        <CSSTransition
+                            in={props.match != null}
+                            timeout={1000}
+                            classNames="page"
+                            appear={true}
+                            unmountOnExit
+                        >
+                            <Home />
+                        </CSSTransition>
+                    )
+                }
+                </Route>
             <Route key="/Form" exact path="/Form">
-              {({ match }) => (
-                <CSSTransition
-                  in={match != null}
-                  timeout={duration}
-                  classNames="page"
-                  unmountOnExit
-                >
-                  <div className="page">
-                    <AsyncForm dataAdd={this.dataAdd}/>
-                  </div>
-                </CSSTransition>
-              )}
+                {
+                    (props) => (
+                        <CSSTransition
+                            in={props.match != null}
+                            timeout={1000}
+                            classNames="page"
+                            appear={true}
+                            unmountOnExit
+                        >
+                            <Form dataAdd={this.dataAdd} {...props} />
+                        </CSSTransition>
+                    )
+                }
             </Route>
             <Route key="/List" exact path="/List">
-              {({ match }) => (
-                <CSSTransition
-                  in={match != null}
-                  timeout={duration}
-                  classNames="page"
-                  unmountOnExit
-                >
-                  <div className="page">
-                    <AsyncList defaultList={this.state.list} dataDetail={this.dataDetail}/>
-                  </div>
-                </CSSTransition>
-              )}
+                {
+                    (props) => (
+                        <CSSTransition
+                            in={props.match != null}
+                            timeout={1000}
+                            classNames="page"
+                            appear={true}
+                            unmountOnExit
+                        >
+                            <List
+                                dataList={this.dataList}
+                                defaultList={this.state.list}
+                                listIndex={this.listIndex}
+                            />
+                        </CSSTransition>
+                    )
+                }
             </Route>
             <Route key="/Detail" exact path="/Detail">
-              {({ match }) => (
-                <CSSTransition
-                  in={match != null}
-                  timeout={duration}
-                  classNames="page"
-                  unmountOnExit
-                >
-                  <div className="page">
-                    <AsyncDetail defaultDetail={this.state.detail}/>
-                  </div>
-                </CSSTransition>
-              )}
+                {
+                    (props) => (
+                        <CSSTransition
+                            in={props.match != null}
+                            timeout={1000}
+                            classNames="page"
+                            appear={true}
+                            unmountOnExit
+                        >
+                            <Detail
+                                dataDetail={this.dataDetail}
+                                defaultDetail={this.state.detail}
+                                {...props}
+                            />
+                        </CSSTransition>
+                    )
+                }
             </Route>
-            <Route key="/NoMatch" component={AsyncNoMatch} />
-        </BrowserRouter>
+
+        </Router>
         )
     }
 }

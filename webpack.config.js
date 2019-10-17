@@ -16,8 +16,8 @@ module.exports = (env, options)=> {
             ]
         },
         output: {
-            path: path.join(__dirname, 'dist'),
-            // publicPath: path.join(__dirname, 'dist'),
+            path: path.resolve(__dirname, 'dist'),
+            // publicPath: '',
             filename: 'bundle.[name].js',
             chunkFilename: "bundle.[name].[id]-[chunkhash].js"
         },
@@ -34,11 +34,6 @@ module.exports = (env, options)=> {
                         presets: [
                             '@babel/preset-env',
                             '@babel/preset-react'
-                        ],
-                        plugins: [
-                            '@babel/plugin-proposal-class-properties',
-                            'react-hot-loader/babel',
-                            // ['module-resolver',{'root':['./']}]
                         ]
                     }
                 }
@@ -48,12 +43,15 @@ module.exports = (env, options)=> {
                     'style-loader',
                     'css-loader'
                 ]
-            }
-            ,{
+            },{
                 test: /\.(png|jpg)$/,
-                loaders : [
-                    'file-loader'
-                ]
+                use: {
+                  loader: 'file-loader',
+                  options: {
+                    // publicPath: './dist/',
+                    name: '[name].[ext]?[hash]',
+                  }
+                }
             }]
         },
         resolve: {
@@ -81,14 +79,14 @@ module.exports = (env, options)=> {
         config.plugins = [
             new webpack.HotModuleReplacementPlugin(),
             new HtmlWebpackPlugin({
-                template: './public/index.html'
+                template: './public/index.html',
+                // filename: __dirname + '/dist/index.html'
             })
-        ],
-
+        ];
         config.devtool = 'inline-source-map';
         config.devServer = {
             open: true,
-            contentBase: './dist',
+            // contentBase: './dist',
             inline: true,
             hot: true,
             historyApiFallback: true,

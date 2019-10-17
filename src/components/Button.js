@@ -4,7 +4,7 @@ class Button extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            text: props.defaultText || 버튼
+            text: props.defaultText || '버튼'
         }
     }
     render(){

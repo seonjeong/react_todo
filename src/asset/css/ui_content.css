@@ -82,27 +82,18 @@ lists.html
     position: absolute;
     bottom  : 0;
     left    : 0;
-}
-/*------------------------------------------------------------
-detail.html
-------------------------------------------------------------*/
+}s
 .detail_view {
     position  : relative;
-    z-index   : -1;
-    visibility: hidden;
     width     : 100%;
     background: #fff;
-    opacity   : 0;
-}
-/* .detail_view */
-.detail_view {
-    z-index   : 10;
-    visibility: visible;
-    opacity   : 1;
 }
 .basic_column {
     position   : relative;
     padding-top: 200px;
+}
+.detail_view .detail_img .detail_img {
+    height: 200px;
 }
 .detail_view .detail_img .imgbox {
     position  : absolute;
@@ -128,7 +119,8 @@ detail.html
     transform: translateY(0);
 }
 .detail_view .detail_column.basic_info_column {
-    background: #f0f0f0;
+    padding-top: 0;
+    background : #f0f0f0;
 }
 .detail_view .detail_column.my_comment_column {
     background: #f0f0f0;
@@ -191,4 +183,21 @@ detail.html
 .detail_view .detail_comment {
     color    : #707070;
     font-size: 14px;
+}
+/*------------------------------------------------------------
+form.html
+------------------------------------------------------------*/
+.search {
+    padding-top: 20px;
+    border-bottom: 5px solid #d0d0d0;
+    margin-bottom: 20px;
+}
+.selectedBook {
+    position: fixed;
+    bottom: 0;
+    left: 0; width: 100%;
+    background: #f0f0f0;
+    overflow-y: scroll;
+    height: 0;
+    transition: all 300ms;
 }
